@@ -12,7 +12,7 @@ const Page = () => {
     const formData = new FormData();
     formData.append('image', image);
     try {
-      const response = await fetch(`http://127.0.0.1:7000/api/v1/edit/${selectedFilter}`, {
+      const response = await fetch(`https://arays-backend.vercel.app/api/v1/edit/${selectedFilter}`, {
         method: 'POST',
         body: formData,
       });
