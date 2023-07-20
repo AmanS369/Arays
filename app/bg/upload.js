@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-const ImageUploadForm = ({ onSubmit,onFilterSelect }) => {
+const UploadForm = ({ onSubmit,onthresholdSelec }) => {
   const [image, setImage] = useState(null);
-
-
+  const [threshold, setthreshold] = useState(128);
   
   const handleChange = (e) => {
     setImage(e.target.files[0]);
-   
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(image);
-  };
-  const handleFilterClick = (filter) => {
-    onFilterSelect(filter);
+    onSubmit(image,threshold);
   };
 
   return (
@@ -45,20 +40,31 @@ const ImageUploadForm = ({ onSubmit,onFilterSelect }) => {
                   </div>
                 )}
             <label htmlFor="file">
-              <div>
-           
-                <span className="formbold-browse"> Browse </span>
+              <div className='mt-4'>
               </div>
             </label>
           </div>
 
         </div>
         <div className='mb-3'>
+        <div>
+      <div className='mb-3'>
+      <label htmlFor="threshold"><h4>Enter Threshold</h4></label>
+      </div>
+      <input
+        type="number"
+        id="threshold"
+        name="threshold"
+        min="0"
+        max="255"
+        value={threshold}
+        onChange={(e)=>{setthreshold(e.target.value)}}
+      />
+    </div>
        
-        <div><button  className="btn btn-primary mt-3 mb-3"  onClick={() => handleFilterClick('invert')}>Invert</button></div>
-        <div><button  className="btn btn-primary mb-3" onClick={() => handleFilterClick('grayscale')}>Grayscale</button></div>
-      
-        <div><button className="btn btn-primary mb-3" onClick={() => handleFilterClick('png_convert')}>PNG to JPG</button></div>
+        
+        <div className='mt-3'><button className="btn btn-primary mb-3" >Black & White</button></div>
+       
           </div>
          
           
@@ -73,4 +79,4 @@ const ImageUploadForm = ({ onSubmit,onFilterSelect }) => {
   );
 };
 
-export default ImageUploadForm;
+export default UploadForm;

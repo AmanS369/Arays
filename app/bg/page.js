@@ -2,17 +2,17 @@
 import React from 'react'
 import { useState } from 'react';
 import '../main.css'
-import ImageUploadForm from './imageUploadForm';
+import UploadForm from './upload';
 import Layout from '@/components/Layout';
 import Image from 'next/image';
 const Page = () => {
   const [invertedImageUrl, setInvertedImageUrl] = useState(null);
-  const [selectedFilter, setSelectedFilter] = useState(null);
-  const handleSubmit = async (image) => {
+
+  const handleSubmit = async (image,threshold) => {
     const formData = new FormData();
     formData.append('image', image);
     try {
-      const response = await fetch(`http://127.0.0.1:7000/api/v1/edit/${selectedFilter}`, {
+      const response = await fetch(`https://arays-backend.vercel.app/api/v1/edit/b&w/${threshold}`, {
         method: 'POST',
         body: formData,
       });
@@ -35,21 +35,21 @@ const Page = () => {
     if (invertedImageUrl) {
       const a = document.createElement('a');
       a.href = invertedImageUrl;
-      a.download = 'Proccessed_image.png';
+      a.download = 'BlacknWhite_image.png';
       a.click();
     } else {
       console.error('Please process an image first.');
     }
   };
   const handleFilterSelection = (filter) => {
-    setSelectedFilter(filter);
+    setSelectedthreshold(filter);
   };
   return (
      <>
      <Layout title="Arays">
     <div className='container-fluid m-3 p-3 '>
     <div className='row'>
-      <div className='col-md-5'><ImageUploadForm onSubmit={handleSubmit} onFilterSelect={handleFilterSelection} /></div>
+      <div className='col-md-5'><UploadForm onSubmit={handleSubmit} onthresholdSelect={handleFilterSelection} /></div>
       <div className='col-md-7'>
       <div className='card w-75 p-3'>
         <h1>Welcome </h1>

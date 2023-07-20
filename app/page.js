@@ -11,6 +11,11 @@ export default function Home() {
           <Link href="/image">
           <button className='btn btn-primary'>EDIT IMAGES</button>
           </Link>
+          <Link href="/bg">
+            <div className='mt-3'>
+          <button className='btn btn-primary'>Black N White</button>
+          </div>
+          </Link>
        </Layout>
       </div>
     </main>
