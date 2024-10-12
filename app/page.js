@@ -20,7 +20,7 @@ export default function Home() {
               <img src="/bw.png" alt="Black and White" className={styles.cardImage} />
             </div>
             <Link href="/bg">
-              <button className={styles.cardButton}>Convert to Black and White</button>
+              <button className={styles.cardButton}>Convert Black and White</button>
             </Link>
           </div>
         </div>
