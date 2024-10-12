@@ -1,0 +1,32 @@
+.navbar {
+    background-color: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(20px); 
+    border: none; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.brand-name {
+    font-size: 1.8rem; 
+    font-weight: 700; 
+    color: #000;
+    margin-left: 15px;
+    font-style: italic; 
+}
+
+.nav-text {
+    font-weight: 500; 
+    color: #333; 
+    font-size: 1.2rem; 
+}
+
+.nav-item {
+    margin-left: 25px; 
+}
+
+.nav-link {
+    transition: color 0.3s; 
+}
+
+.nav-link:hover {
+    color: #0056b3; 
+}

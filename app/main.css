@@ -1,0 +1,23 @@
+body {
+    background-color: #f4fffa;   }
+
+.separator {
+    border-top: 1px solid #ccc;     margin: 10px 0;   }
+  
+  .button-container {
+    display: flex;     justify-content: center;     gap: 20px;     margin-top: 10px;   }
+  
+  .modern-btn {
+    background-color: rgba(0, 123, 255, 0.8);     color: white;     padding: 10px 20px;     border-radius: 5px;     cursor: pointer;     font-size: 16px;     font-weight: bold;     transition: background-color 0.3s, transform 0.3s;     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);   }
+  
+  .modern-btn:hover {
+    background-color: rgba(0, 123, 255, 1);
+    color: white; 
+  }
+  
+  .img-responsive {
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+  

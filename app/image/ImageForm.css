@@ -1,0 +1,65 @@
+.formbold-main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4fffa;
+    height: 72vh; }
+
+.formbold-form-wrapper {
+    width: 100%;
+    max-width: 500px;     background: white;     border-radius: 10px;     padding: 20px;     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+
+.formbold-file-input {
+    display: inline-block;     width: 100%;     text-align: center; }
+
+.file-input {
+    display: none; 
+}
+
+.label-container {
+    display: flex;     flex-direction: column;     align-items: center;
+    margin-top: -20px;
+    font-size: 20px;
+    font-weight: bolder; }
+
+.browse-button {
+    display: inline-block;
+    background-color: rgba(0, 123, 255, 0.8);     color: white;     padding: 10px 20px;     border-radius: 5px;     cursor: pointer;     margin-top: 10px;     transition: background-color 0.3s;
+    font-size: 16px;}
+
+.browse-button:hover {
+    background-color: rgba(0, 123, 255, 1); }
+
+.button-container {
+    display: flex;     justify-content: space-between;     margin-top: 20px; 
+}
+
+.btn {
+    background-color: rgba(0, 123, 255, 0.8); 
+    color: white;
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 15px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s; 
+    font-weight: bolder; 
+}
+
+.btn:hover {
+    background-color: rgba(0, 123, 255, 1); 
+}
+
+.separator {
+    border: none; 
+    height: 1px; 
+    background-color: rgba(0, 123, 255, 0.5); 
+    margin: 20px 0; 
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
