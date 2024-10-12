@@ -26,7 +26,7 @@ const ImageUploadForm = ({ onSubmit, onFilterSelect }) => {
             <label className="formbold-form-label formbold-form-label-2">
               {image ? image.name : "Upload Image"}
             </label>
-            <div className="formbold-mb-5 formbold-file-input text-center"> {/* Center the input */}
+            <div className="formbold-mb-5 formbold-file-input text-center"> 
               <input 
                 required 
                 type="file" 

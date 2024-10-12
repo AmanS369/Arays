@@ -5,9 +5,7 @@ import './BlackAndWhite.css';
 const UploadForm = ({ onSubmit, onThresholdSelect }) => {
   const [image, setImage] = useState(null);
   const [threshold, setThreshold] = useState(128);
-  const [errorMessage, setErrorMessage] = useState(''); // State for error message
-
-  // Reference to the hidden file input
+  const [errorMessage, setErrorMessage] = useState(''); 
   const fileInputRef = React.createRef();
 
   const handleChange = (e) => {
