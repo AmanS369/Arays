@@ -1,14 +1,15 @@
-"use client"
-import React from 'react'
+"use client";
+import React from 'react';
 import { useState } from 'react';
-import '../main.css'
+import '../main.css';
 import UploadForm from './upload';
 import Layout from '@/components/Layout';
 import Image from 'next/image';
+
 const Page = () => {
   const [invertedImageUrl, setInvertedImageUrl] = useState(null);
 
-  const handleSubmit = async (image,threshold) => {
+  const handleSubmit = async (image, threshold) => {
     const formData = new FormData();
     formData.append('image', image);
     try {
@@ -24,6 +25,7 @@ const Page = () => {
       console.error('Error:', error);
     }
   };
+
   const handlePreview = () => {
     if (invertedImageUrl) {
       window.open(invertedImageUrl, '_blank');
@@ -31,6 +33,7 @@ const Page = () => {
       console.error('Please process an image first.');
     }
   };
+
   const handleDownload = () => {
     if (invertedImageUrl) {
       const a = document.createElement('a');
@@ -41,47 +44,49 @@ const Page = () => {
       console.error('Please process an image first.');
     }
   };
-  const handleFilterSelection = (filter) => {
-    setSelectedthreshold(filter);
-  };
+
   return (
-     <>
-     <Layout title="Arays">
-    <div className='container-fluid m-3 p-3 '>
-    <div className='row'>
-      <div className='col-md-5'><UploadForm onSubmit={handleSubmit} onthresholdSelect={handleFilterSelection} /></div>
-      <div className='col-md-7'>
-      <div className='card w-75 p-3'>
-        <h1>Welcome </h1>
-        {invertedImageUrl &&
-        <div>
-            <Image src={invertedImageUrl} 
-                    alt="product_phot" 
-                    height={200}
-                    width={400}
-                    className='img img-responsive'
-                    />
+    <>
+      <Layout title="Arays">
+        <div className="container-fluid m-3 p-3">
+          <div className="row">
+            <div className="col-md-5">
+              <UploadForm onSubmit={handleSubmit} />
+            </div>
+            <div className="col-md-7">
+              <div className="card w-75 p-3 text-center">
+                <h1 className="welcome-text">Welcome!</h1>
+
+                {invertedImageUrl && (
+                  <>
+                    <hr className="thin-separator" /> {/* Thin separator below Welcome */}
                     <div>
-                      <div className='mt-3'
-                      >
-                    <button className="btn btn-primary  " onClick={handlePreview}>Preview </button>
-                    <br></br>
-                   <button className="btn btn-primary mt-3"  onClick={handleDownload}>Download</button>
-                   </div>
-                      </div>                    
+                      <Image
+                        src={invertedImageUrl}
+                        alt="Processed Image"
+                        height={200}
+                        width={400}
+                        className="img img-responsive mx-auto d-block"
+                      />
+                      <hr className="thin-separator" /> 
+                      <div className="button-container mt-3">
+                        <button className="btn btn-primary" onClick={handlePreview}>
+                          Preview
+                        </button>
+                        <button className="btn btn-primary" onClick={handleDownload}>
+                          Download
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-        }            
-      </div>
-      </div> 
-    </div>
-  </div>
-  </Layout>
-  </>
+      </Layout>
+    </>
   );
 };
+
 export default Page;
-
-
-
-
- 

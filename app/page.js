@@ -1,23 +1,30 @@
-
-import Link from 'next/link'
-import styles from './page.module.css'
-import Layout from '@/components/Layout'
+import Link from 'next/link';
+import styles from './page.module.css';
+import Layout from '@/components/Layout';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-       <Layout title="Home">
-          <Link href="/image">
-          <button className='btn btn-primary'>EDIT IMAGES</button>
-          </Link>
-          <Link href="/bg">
-            <div className='mt-3'>
-          <button className='btn btn-primary'>Black N White</button>
+    <Layout title="Home">
+      <main className={styles.main}>
+        <div className={styles.cardContainer}>
+          <div className={styles.card}>
+            <div className={styles.imageContainer}>
+              <img src="../public/edit.jpg" alt="Edit Images" className={styles.cardImage} />
+            </div>
+            <Link href="/image">
+              <button className={styles.cardButton}>Edit Images</button>
+            </Link>
           </div>
-          </Link>
-       </Layout>
-      </div>
-    </main>
-  )
+          <div className={styles.card}>
+            <div className={styles.imageContainer}>
+              <img src="../public/black_and_white.jpg" alt="Black and White" className={styles.cardImage} />
+            </div>
+            <Link href="/bg">
+              <button className={styles.cardButton}>Convert to Black and White</button>
+            </Link>
+          </div>
+        </div>
+      </main>
+    </Layout>
+  );
 }

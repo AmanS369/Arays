@@ -1,81 +1,103 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-const UploadForm = ({ onSubmit,onthresholdSelec }) => {
+import './BlackAndWhite.css';
+
+const UploadForm = ({ onSubmit, onThresholdSelect }) => {
   const [image, setImage] = useState(null);
-  const [threshold, setthreshold] = useState(128);
-  
+  const [threshold, setThreshold] = useState(128);
+  const [errorMessage, setErrorMessage] = useState(''); 
+  const fileInputRef = React.createRef();
+
   const handleChange = (e) => {
     setImage(e.target.files[0]);
+    setErrorMessage(''); // Clear error when an image is selected
+  };
+
+  // Programmatically trigger the file input click
+  const handleBrowseClick = () => {
+    fileInputRef.current.click();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(image,threshold);
+    if (!image) {
+      setErrorMessage('No image selected. Please select an image.');
+    } else {
+      setErrorMessage(''); // Clear the error if the image is valid
+      onSubmit(image, threshold);
+    }
   };
 
   return (
-  
-    <div className="formbold-main-wrapper ">
- 
-    <div className="formbold-form-wrapper">
+    <div className="upload-form">
+      <h2 className="text-center upload-label">Upload Image</h2>
       <form onSubmit={handleSubmit}>
-        
-        <div className="mb-6 pt-4">
-          <label className="formbold-form-label formbold-form-label-2">
-          {image ?image.name:"Upload Image"} 
-          </label>
-          <div className="formbold-mb-5 formbold-file-input">
-            <input required type="file" name="file" id="file" 
-           onChange={handleChange}
+        <div className="mb-6 pt-4 text-center">
+          <div className="form-file-input">
+            {/* Hidden file input */}
+            <input
+              ref={fileInputRef}
+              type="file"
+              name="file"
+              id="file"
+              onChange={handleChange}
+              style={{ display: 'none' }} // Hide the file input
             />
-            {image&&(
-                  <div className="text-center">
-                  
-                    <Image src={URL.createObjectURL(image)} 
-                    alt="product_phot" 
-                    height={200}
-                    width={400}
-                    className='img img-responsive'
-                    />
-                  </div>
-                )}
-            <label htmlFor="file">
-              <div className='mt-4'>
+            {/* Custom Browse button */}
+            <button
+              type="button"
+              className="btn modern-btn"
+              onClick={handleBrowseClick}
+            >
+              Browse
+            </button>
+            {image && (
+              <div className="text-center mt-3">
+                <Image
+                  src={URL.createObjectURL(image)}
+                  alt="Uploaded Preview"
+                  height={200}
+                  width={400}
+                  className="img img-responsive mx-auto d-block"
+                />
               </div>
-            </label>
+            )}
+            {/* Error message for no image selected */}
+            {errorMessage && (
+              <div className="error-message mt-2">{errorMessage}</div>
+            )}
           </div>
-
         </div>
-        <div className='mb-3'>
-        <div>
-      <div className='mb-3'>
-      <label htmlFor="threshold"><h4>Enter Threshold</h4></label>
-      </div>
-      <input
-        type="number"
-        id="threshold"
-        name="threshold"
-        min="0"
-        max="255"
-        value={threshold}
-        onChange={(e)=>{setthreshold(e.target.value)}}
-      />
-    </div>
-       
-        
-        <div className='mt-3'><button className="btn btn-primary mb-3" >Black & White</button></div>
-       
-          </div>
-         
-          
-        
+
+        <hr className="separator" />
+
+        <div className="mb-3 d-flex align-items-center justify-content-between">
+          <h4 className="mb-0 threshold">Enter Threshold</h4>
+          <input
+            type="number"
+            id="threshold"
+            name="threshold"
+            min="0"
+            max="255"
+            value={threshold}
+            onChange={(e) => {
+              setThreshold(e.target.value);
+              onThresholdSelect(e.target.value);
+            }}
+            className="threshold-input"
+            style={{ width: '60%', marginLeft: '10px' }}
+          />
+        </div>
+
+        <hr className="separator" />
+
+        <div className="mt-3 text-center">
+          <button type="submit" className="btn modern-btn mb-3">
+            Black & White
+          </button>
+        </div>
       </form>
-     <div>
-     
-     </div>
     </div>
-    </div>
-    
   );
 };
 

@@ -1,0 +1,52 @@
+.main {
+    display: flex;
+    justify-content: center;  
+    align-items: flex-middle;  
+    flex-direction: column;   
+    height: calc(100vh - 60px);
+    margin-top: -50px;
+    background-color:  #f4fffa;
+}
+
+.cardContainer {
+    display: flex;
+    gap: 20px;               
+    justify-content: center;          
+}
+
+.card {
+    background-color: white;   
+    border-radius: 7px;       
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;         
+    width: 300px;              
+    text-align: center;        
+}
+
+.imageContainer {
+    height: 200px;            
+    overflow: hidden;          
+}
+
+.cardImage {
+    width: 100%;               
+    height: auto;              
+    object-fit: cover;         
+}
+
+.cardButton {
+    background-color: #007bff; 
+    border: none;              
+    color: white;              
+    padding: 12px 20px;       
+    border-radius: 0 0 7px 7px; 
+    width: 100%;              
+    cursor: pointer;           
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cardButton:hover {
+    background-color: #0056b3; 
+}

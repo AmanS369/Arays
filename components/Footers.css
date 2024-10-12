@@ -1,0 +1,17 @@
+.footer {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
+    border-top: 1px solid rgba(255, 255, 255, 0.2); 
+    padding: 1rem; 
+    position: relative; 
+}
+
+.footerContent {
+    color: black; 
+    text-align: center;     font-size: 0.9rem;     margin-left: 15px; }
+
+.footerContent a {
+    color: black;     text-decoration: none;     transition: color 0.3s; }
+
+.footerContent a:hover {
+    color: #007bff; }

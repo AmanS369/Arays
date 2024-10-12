@@ -1,13 +1,14 @@
-"use client"
-import React from 'react'
-import { useState } from 'react';
-import '../main.css'
+"use client";
+import React, { useState } from 'react';
+import '../main.css';
 import ImageUploadForm from './imageUploadForm';
 import Layout from '@/components/Layout';
 import Image from 'next/image';
+
 const Page = () => {
   const [invertedImageUrl, setInvertedImageUrl] = useState(null);
   const [selectedFilter, setSelectedFilter] = useState(null);
+
   const handleSubmit = async (image) => {
     const formData = new FormData();
     formData.append('image', image);
@@ -24,6 +25,7 @@ const Page = () => {
       console.error('Error:', error);
     }
   };
+
   const handlePreview = () => {
     if (invertedImageUrl) {
       window.open(invertedImageUrl, '_blank');
@@ -31,57 +33,57 @@ const Page = () => {
       console.error('Please process an image first.');
     }
   };
+
   const handleDownload = () => {
     if (invertedImageUrl) {
       const a = document.createElement('a');
       a.href = invertedImageUrl;
-      a.download = 'Proccessed_image.png';
+      a.download = 'Processed_image.png';
       a.click();
     } else {
       console.error('Please process an image first.');
     }
   };
+
   const handleFilterSelection = (filter) => {
     setSelectedFilter(filter);
   };
+
   return (
-     <>
-     <Layout title="Arays">
-    <div className='container-fluid m-3 p-3 '>
-    <div className='row'>
-      <div className='col-md-5'><ImageUploadForm onSubmit={handleSubmit} onFilterSelect={handleFilterSelection} /></div>
-      <div className='col-md-7'>
-      <div className='card w-75 p-3'>
-        <h1>Welcome </h1>
-        {invertedImageUrl &&
-        <div>
-            <Image src={invertedImageUrl} 
-                    alt="product_phot" 
-                    height={200}
-                    width={400}
-                    className='img img-responsive'
+    <>
+      <Layout title="Arays">
+        <div className='container-fluid m-3 p-3'>
+          <div className='row'>
+            <div className='col-md-5'>
+              <ImageUploadForm onSubmit={handleSubmit} onFilterSelect={handleFilterSelection} />
+            </div>
+            <div className='col-md-7'>
+              <div className='card w-75 p-3 text-center'>
+                <h1>Welcome!</h1>
+                {invertedImageUrl && (
+                  <>
+                    <hr className='separator' />
+                    <Image 
+                      src={invertedImageUrl}
+                      alt="processed_image"
+                      height={200}
+                      width={400}
+                      className='img img-responsive mx-auto d-block'
                     />
-                    <div>
-                      <div className='mt-3'
-                      >
-                    <button className="btn btn-primary  " onClick={handlePreview}>Preview </button>
-                    <br></br>
-                   <button className="btn btn-primary mt-3"  onClick={handleDownload}>Download</button>
-                   </div>
-                      </div>                    
+                    <hr className='separator' />
+                    <div className='button-container'>
+                      <button className="btn modern-btn" onClick={handlePreview}>Preview</button>
+                      <button className="btn modern-btn" onClick={handleDownload}>Download</button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-        }            
-      </div>
-      </div> 
-    </div>
-  </div>
-  </Layout>
-  </>
+      </Layout>
+    </>
   );
 };
+
 export default Page;
-
-
-
-
- 
