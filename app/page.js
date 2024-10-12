@@ -9,7 +9,7 @@ export default function Home() {
         <div className={styles.cardContainer}>
           <div className={styles.card}>
             <div className={styles.imageContainer}>
-              <img src="../public/edit.jpg" alt="Edit Images" className={styles.cardImage} />
+              <img src="/edit.jpg" alt="Edit Images" className={styles.cardImage} />
             </div>
             <Link href="/image">
               <button className={styles.cardButton}>Edit Images</button>
@@ -17,7 +17,7 @@ export default function Home() {
           </div>
           <div className={styles.card}>
             <div className={styles.imageContainer}>
-              <img src="../public/black_and_white.jpg" alt="Black and White" className={styles.cardImage} />
+              <img src="/bw.png" alt="Black and White" className={styles.cardImage} />
             </div>
             <Link href="/bg">
               <button className={styles.cardButton}>Convert to Black and White</button>
